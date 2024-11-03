@@ -41,9 +41,9 @@
 
 #### Funcionalidades Adicionales
 
-    Manejo de Errores: Asegúrate de implementar un manejo de errores efectivo en ambas APIs.
-    Interfaz de Usuario: Asegúrate de que la interfaz sea intuitiva, con mensajes claros sobre el estado de las acciones (éxitos y errores).
-    Pruebas: Incluye pruebas unitarias y de integración para ambos backends y las funciones críticas de los frontends.
+- Manejo de Errores: Asegúrate de implementar un manejo de errores efectivo en ambas APIs.
+- Interfaz de Usuario: Asegúrate de que la interfaz sea intuitiva, con mensajes claros sobre el estado de las acciones (éxitos y errores).
+- Pruebas: Incluye pruebas unitarias y de integración para ambos backends y las funciones críticas de los frontends.
 
 ## Author
 
