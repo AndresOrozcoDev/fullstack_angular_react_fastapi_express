@@ -6,7 +6,8 @@ Proyecto backend creado basado en Node v3.13.0 con Express v4.21.1 para la gesti
 
 En esta sección se deben incluir los principales frameworks y bibliotecas que se utilizaron para iniciar el proyecto. Los complementos y plugins se pueden dejar para la sección de agradecimientos. A continuación se muestran algunos ejemplos.
 
-* [![Express][Express.js]][Express-url]
+* [![NodeJS](https://img.shields.io/badge/Node.js-6DA55F?logo=node.js&logoColor=white)]
+* [![Express.js](https://img.shields.io/badge/Express.js-%23404d59.svg?logo=express&logoColor=%2361DAFB)]
 
 ## Ejecucion de desarrollo
 
