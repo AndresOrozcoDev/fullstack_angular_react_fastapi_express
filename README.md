@@ -30,7 +30,7 @@
 
 - SQLite
     Tablas para usuarios (con campos como id, nombre, correo, contraseña hash).
-    Tareas (con campos como id, título, descripción, estado, usuario_id).
+    Tablas para tareas (con campos como id, título, descripción, estado, fecha de creacion, fecha de actualizacion).
 
 #### Seguridad
 

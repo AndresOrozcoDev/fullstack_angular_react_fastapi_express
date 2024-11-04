@@ -1,6 +1,6 @@
 # Gestion de tareas
 
-Proyecto backend creado basado en Python v3.13.0 con FastAPI v0.115.4 para la gestion de tares en una base de datos SQLite3
+Proyecto backend creado basado en Python v3.13.0 con FastAPI v0.115.4 para la gestion de tares en una base de datos SQLite3.
 
 
 ### Ejecucion de desarrollo
