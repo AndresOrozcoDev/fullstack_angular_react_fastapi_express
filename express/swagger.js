@@ -9,6 +9,7 @@ const swaggerOptions = {
       description: 'HTTP services.',
       contact: {
         name: 'Andres Orozco',
+        url: 'https://github.com/AndresOrozcoDev',
         email: 'andres.orozco.dev@gmail.com',
       },
     },
