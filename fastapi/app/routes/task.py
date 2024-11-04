@@ -44,6 +44,22 @@ async def create_task(task: TaskInterface = Body(), db: Session = Depends(get_db
             'data': []
         })
 
+@router.put('/{id}', response_model=Response)
+async def update_task(id: int = Path(), status: str = Body(), db: Session = Depends(get_db)):
+    try:
+        updated_task = TaskServices(db).update_task(id, status)
+        if not updated_task:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Task not found')
+        return JSONResponse(status_code=status.HTTP_200_OK, content={
+            'status_code': 200,
+            'message': 'Task updated',
+            'data': jsonable_encoder(updated_task)
+        })
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
 @router.delete('/{id}')
 async def delete_task(id: int = Path(), db: Session = Depends(get_db)):
     try:
