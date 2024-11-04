@@ -1,12 +1,18 @@
 const express = require('express');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
+const bodyParser = require('body-parser');
+require('dotenv').config();
+
 const swaggerDocs = require('./swagger');
 const usersRoutes = require('./routes/users');
 const errorHandler = require('./middleware/errorHandler');
+const db = require('./config/database');
 
 const app = express();
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
 
 // Configuración de Swagger
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
@@ -29,7 +35,7 @@ app.get('/openapi.json', (req, res) => {
 });
 
 // Rutas principales
-app.use('/', usersRoutes);
+app.use('/api/users', usersRoutes);
 
 // Middleware de manejo de errores
 app.use(errorHandler);
