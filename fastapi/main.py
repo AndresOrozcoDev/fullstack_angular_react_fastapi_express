@@ -33,7 +33,7 @@ app.add_middleware(
 )
 
 # Creacion y esquema de Header
-api_key_header = APIKeyHeader(name="x-key", auto_error=False)
+api_key_header = APIKeyHeader(name="API_KEY", auto_error=False)
 API_KEY = "dev"
 
 # Función para validar la API key

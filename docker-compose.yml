@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  express-app:
+    build:
+      context: ./express
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+  
+  fastapi-app:
+    build:
+      context: ./fastapi
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
