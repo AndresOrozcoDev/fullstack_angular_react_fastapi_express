@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException, Security
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import APIKeyHeader
 
 from app.database import engine, Base
@@ -20,6 +21,15 @@ app = FastAPI(
             "description": "Local server",
         },
     ],
+)
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 api_key_header = APIKeyHeader(name="x-key", auto_error=False)
