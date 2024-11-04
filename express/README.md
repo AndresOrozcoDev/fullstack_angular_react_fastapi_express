@@ -22,11 +22,19 @@ npm run dev
 | `API-KEY` | `string` | **Required**. Your API key |
 
 ```bash
-**Request Body**
-{
-  "username": "string",
-  "password": "string"
-}
+Request Body:
+    {
+    "username": "string",
+    "password": "string"
+    }
+```
+
+```bash
+Response:
+    {
+    "username": "string",
+    "password": "string"
+    }
 ```
 
 #### Post register
@@ -39,6 +47,22 @@ npm run dev
 | :-------- | :------- | :------------------------- |
 | `API-KEY` | `string` | **Required**. Your API key |
 
+```bash
+Request Body:
+    {
+    "username": "string",
+    "password": "string"
+    }
+```
+
+```bash
+Response:
+    {
+    "username": "string",
+    "password": "string"
+    }
+```
+
 #### Get me
 
 ```http
@@ -49,3 +73,11 @@ npm run dev
 | :--------------- | :------- | :------------------------- |
 | `API-KEY`        | `string` | **Required**. Your API key |
 | `x-access-token` | `string` | **Required**. Your token   |
+
+```bash
+Response:
+    {
+    "username": "string",
+    "password": "string"
+    }
+```
