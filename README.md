@@ -43,6 +43,14 @@
 - Interfaz de Usuario: Asegúrate de que la interfaz sea intuitiva, con mensajes claros sobre el estado de las acciones (éxitos y errores).
 - Pruebas: Incluye pruebas unitarias y de integración para ambos backends y las funciones críticas de los frontends.
 
+### Ejecucion local
+
+Para una ejecucion rapida y sencilla, se desarrollo una contenerizacion en Docker, asi que es necesario que tengas Docker Desktop y ejecutar el siguiente comando
+
+```bash
+docker-compose up
+```
+
 ## Autor
 
 [@AndresOrozcoDev](https://github.com/AndresOrozcoDev)

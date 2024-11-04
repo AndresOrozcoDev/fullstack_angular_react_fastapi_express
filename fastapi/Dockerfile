@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 8000
 
 # Comando para iniciar la aplicación
-CMD ["fastapi", "dev", "main.py"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
