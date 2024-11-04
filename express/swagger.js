@@ -21,7 +21,7 @@ const swaggerOptions = {
     ],
     tags: [
       {
-        name: 'users',
+        name: 'Users',
         description: 'Endpoints for managing users',
       }
     ],
