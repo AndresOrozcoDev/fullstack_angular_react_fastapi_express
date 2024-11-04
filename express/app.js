@@ -18,7 +18,6 @@ const corsOptions = {
   allowedHeaders: ['Content-Type']
 };
 
-// Middleware
 app.use(cors(corsOptions));
 app.use(express.json());
 app.options('*', cors(corsOptions));

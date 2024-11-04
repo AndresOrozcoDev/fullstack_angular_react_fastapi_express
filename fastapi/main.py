@@ -23,7 +23,7 @@ app = FastAPI(
     ],
 )
 
-
+# Configuración de CORS y Middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -32,6 +32,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Creacion y esquema de Header
 api_key_header = APIKeyHeader(name="x-key", auto_error=False)
 API_KEY = "dev"
 
@@ -44,5 +45,8 @@ def get_api_key(api_key: str = Security(api_key_header)):
         )
     return api_key
 
+# Rutas principales
 app.include_router(api_router, dependencies=[Depends(get_api_key)])
+
+# Instancia de la base de datos
 Base.metadata.create_all(bind=engine)
