@@ -1,7 +1,12 @@
 # Gestion de tareas
 
-Proyecto backend creado basado en Node v3.13.0 con Express v0.115.4 para la gestion de usuarios en una base de datos SQLite3.
+Proyecto backend creado basado en Node v3.13.0 con Express v4.21.1 para la gestion de usuarios en una base de datos SQLite3.
 
+## Construido
+
+En esta sección se deben incluir los principales frameworks y bibliotecas que se utilizaron para iniciar el proyecto. Los complementos y plugins se pueden dejar para la sección de agradecimientos. A continuación se muestran algunos ejemplos.
+
+* [![Express][Express.js]][Express-url]
 
 ## Ejecucion de desarrollo
 
