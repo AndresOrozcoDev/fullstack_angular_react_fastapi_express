@@ -11,6 +11,11 @@ En esta sección se deben incluir los principales frameworks y bibliotecas que s
 
 ## Ejecucion de desarrollo
 
+Instalacion de dependencias
+```bash
+npm i
+```
+Crear el servidor
 ```bash
 npm run dev
 ```
