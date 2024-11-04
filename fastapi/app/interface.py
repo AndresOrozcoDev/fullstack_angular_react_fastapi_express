@@ -1,3 +1,4 @@
+import datetime
 from pydantic import BaseModel
 from typing import Optional
 
@@ -10,5 +11,5 @@ class Task(BaseModel):
     name: str
     description: str
     status: str
-    created: str
-    updated: str
+    created: Optional[datetime.datetime] = None
+    updated: Optional[datetime.datetime] = None

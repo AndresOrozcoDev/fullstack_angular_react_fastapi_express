@@ -1,6 +1,6 @@
-from datetime import datetime
 from app.models import Task as TaskModel
 from app.interface import Task as TaskInterface
+import datetime
 
 
 class TaskServices():
@@ -22,9 +22,8 @@ class TaskServices():
                 "name": task.name,
                 "description": task.description,
                 "status": task.status,
-                "created": datetime.now(),
-                "updated": datetime.now(),
-                "created": datetime.now(), 
+                "created": task.created or datetime.datetime.utcnow(),
+                "updated": task.updated or datetime.datetime.utcnow(),
             })
         self.db.add(new)
         self.db.commit()

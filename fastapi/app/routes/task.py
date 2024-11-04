@@ -1,6 +1,6 @@
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from fastapi import APIRouter, Body, HTTPException, status, Path
+from fastapi import APIRouter, Body, HTTPException, status, Path, Depends
 
 from app.database import Session
 from app.services.task import TaskServices
@@ -9,15 +9,20 @@ from app.interface import Task as TaskInterface, Response
 
 router = APIRouter()
 
-@router.get('', response_model=Response)
-async def get_tasks():
+def get_db():
     db = Session()
+    try:
+        yield db
+    finally:
+        db.close()
+
+@router.get('', response_model=Response)
+async def get_tasks(db: Session = Depends(get_db)):
     result = TaskServices(db).get_tasks()
     return JSONResponse(status_code=status.HTTP_200_OK, content={'status_code': 200, 'message': 'Task list', 'data':jsonable_encoder(result)})
 
 @router.post('', response_model=Response)
-async def create_task(task: TaskInterface = Body()):
-    db = Session()
+async def create_task(task: TaskInterface = Body(), db: Session = Depends(get_db)):
     try:
         created_task = TaskServices(db).create_task(task)
         return JSONResponse(status_code=201, content={
@@ -33,8 +38,7 @@ async def create_task(task: TaskInterface = Body()):
         })
 
 @router.delete('/{id}')
-async def delete_task(id: int = Path()):
-    db = Session()
+async def delete_task(id: int = Path(), db: Session = Depends(get_db)):
     try:
         isDeleted, task = TaskServices(db).delete_task(id)
         if not task:
