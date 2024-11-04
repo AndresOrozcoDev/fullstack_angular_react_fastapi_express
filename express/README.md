@@ -93,3 +93,7 @@ Response:
         "password": "$2a$08$fr90......"
     }
 ```
+
+## Autor
+
+[@AndresOrozcoDev](https://github.com/AndresOrozcoDev)

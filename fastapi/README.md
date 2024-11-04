@@ -15,6 +15,89 @@ En esta sección se deben incluir los principales frameworks y bibliotecas que s
 fastapi dev main.py
 ```
 
+## Documentacion de API Rest
+
+#### Post login
+
+```bash
+  GET /api/task
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `API-KEY` | `string` | **Required**. Your API key |
+
+```bash
+Response:
+    {
+        "status_code": 200,
+        "message": "Tak list.",
+        "data": []
+    }
+```
+
+#### Post task
+
+```bash
+  POST /api/task
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `API-KEY` | `string` | **Required**. Your API key |
+
+```bash
+Request Body:
+    {
+        "name": "task name",
+        "description": "Hacer commit",
+        "status": "Completado"
+    }
+```
+
+```bash
+Response:
+    {
+        "status_code": 200,
+        "message": "Tak created.",
+        "data": [
+            "id": 1,
+            "name": "task name",
+            "description": "Hacer commit",
+            "status": "Completado",
+            "created": "2024-11-07",
+            "updated": "2024-11-07",
+        ]
+    }
+```
+
+#### Delete task
+
+```bash
+  POST /api/task
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `API-KEY` | `string` | **Required**. Your API key |
+| `id`      | `number` | **Required**. Your ID      |
+
+```bash
+Response:
+    {
+        "status_code": 200,
+        "message": "Tak deleted.",
+        "data": [
+            "id": 1,
+            "name": "task name",
+            "description": "Hacer commit",
+            "status": "Completado",
+            "created": "2024-11-07",
+            "updated": "2024-11-07",
+        ]
+    }
+```
+
 ## Andamio de codigo
 
 Activar entorno virtual
