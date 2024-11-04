@@ -13,7 +13,7 @@ npm run dev
 
 #### Post login
 
-```http
+```bash
   POST /api/users/login
 ```
 
@@ -24,22 +24,22 @@ npm run dev
 ```bash
 Request Body:
     {
-    "username": "string",
-    "password": "string"
+        "username": "testuser",
+        "password": "testpassword"
     }
 ```
 
 ```bash
 Response:
     {
-    "username": "string",
-    "password": "string"
+        "auth": true,
+        "token": "eyJhb........"
     }
 ```
 
 #### Post register
 
-```http
+```bash
   POST /api/users/register
 ```
 
@@ -50,22 +50,22 @@ Response:
 ```bash
 Request Body:
     {
-    "username": "string",
-    "password": "string"
+        "username": "testuser",
+        "password": "testpassword"
     }
 ```
 
 ```bash
 Response:
     {
-    "username": "string",
-    "password": "string"
+        "username": "testuser",
+        "password": "testpassword"
     }
 ```
 
 #### Get me
 
-```http
+```bash
   POST /api/users/me
 ```
 
@@ -77,7 +77,8 @@ Response:
 ```bash
 Response:
     {
-    "username": "string",
-    "password": "string"
+        "id": 1,
+        "username": "testuser",
+        "password": "$2a$08$fr90......"
     }
 ```
