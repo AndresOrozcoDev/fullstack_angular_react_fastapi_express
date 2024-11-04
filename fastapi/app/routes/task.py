@@ -18,8 +18,15 @@ def get_db():
 
 @router.get('', response_model=Response)
 async def get_tasks(db: Session = Depends(get_db)):
-    result = TaskServices(db).get_tasks()
-    return JSONResponse(status_code=status.HTTP_200_OK, content={'status_code': 200, 'message': 'Task list', 'data':jsonable_encoder(result)})
+    try:
+        result = TaskServices(db).get_tasks()
+        return JSONResponse(status_code=status.HTTP_200_OK, content={
+            'status_code': 200,
+            'message': 'Task list',
+            'data': jsonable_encoder(result)
+        })
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
 @router.post('', response_model=Response)
 async def create_task(task: TaskInterface = Body(), db: Session = Depends(get_db)):
@@ -41,8 +48,10 @@ async def create_task(task: TaskInterface = Body(), db: Session = Depends(get_db
 async def delete_task(id: int = Path(), db: Session = Depends(get_db)):
     try:
         isDeleted, task = TaskServices(db).delete_task(id)
-        if not task:
+        if not isDeleted or not task:  # Si no se encuentra la tarea o no se elimina
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Not found task')
-        return JSONResponse(status_code=status.HTTP_200_OK, content={'message': 'task deleted', 'data': jsonable_encoder(task)})
+        return JSONResponse(status_code=status.HTTP_200_OK, content={'status_code': 200, 'message': 'task deleted', 'data': jsonable_encoder(task)})
+    except HTTPException as e:
+        raise e
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))

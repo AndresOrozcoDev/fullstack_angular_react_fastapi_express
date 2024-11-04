@@ -11,6 +11,11 @@ En esta sección se deben incluir los principales frameworks y bibliotecas que s
 
 ## Ejecucion de desarrollo
 
+Activar entorno virtual
+```bash
+env\Scripts\activate
+```
+
 ```bash
 fastapi dev main.py
 ```
@@ -100,11 +105,6 @@ Response:
 
 ## Andamio de codigo
 
-Activar entorno virtual
-```bash
-env\Scripts\activate
-```
-
 Instalar dependencias
 ```bash
 pip install -r requirements.txt
@@ -113,6 +113,14 @@ pip install -r requirements.txt
 Crear o modificar archivo de dependencias
 ```bash
 pip freeze > requirements.txt
+```
+
+## Pruebas unitarias
+
+Para la verificacion de codigo se usan pruebas unitarias con la herramienta de Pytest con Httpx y se ejecuta con el siguiente comando:
+
+```bash
+pytest
 ```
 
 ## Autor
