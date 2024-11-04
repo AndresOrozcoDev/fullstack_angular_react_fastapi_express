@@ -21,6 +21,14 @@ npm run dev
 | :-------- | :------- | :------------------------- |
 | `API-KEY` | `string` | **Required**. Your API key |
 
+```bash
+**Request Body**
+{
+  "username": "string",
+  "password": "string"
+}
+```
+
 #### Post register
 
 ```http
