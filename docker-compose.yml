@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-  
+
   fastapi-app:
     build:
       context: ./fastapi
@@ -15,16 +15,16 @@ services:
     ports:
       - "8000:8000"
 
-  react-app:
-    build:
-      context: ./react
-      dockerfile: Dockerfile
-    ports:
-      - "5000:3000"
+  # react-app:
+  #   build:
+  #     context: ./react
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5000:3000"  # O 5000:3000 si es necesario
 
-  angular-app:
-    build:
-      context: ./angular
-      dockerfile: Dockerfile
-    ports:
-      - "4200:80"
+  # angular-app:
+  #   build:
+  #     context: ./angular
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "4200:4200"  # O ajusta según sea necesario
