@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+button {
+    background-color: black;
+    color: white;
+    height: 40px;
+}
