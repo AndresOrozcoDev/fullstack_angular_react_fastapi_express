@@ -1,4 +1,4 @@
-# Gestion de tareas
+# Gestion de usuarios
 
 Proyecto backend creado basado en Node v3.13.0 con Express v4.21.1 para la gestion de usuarios en una base de datos SQLite3.
 
@@ -8,6 +8,7 @@ En esta sección se deben incluir los principales frameworks y bibliotecas que s
 
 * [![NodeJS](https://img.shields.io/badge/Node.js-6DA55F?logo=node.js&logoColor=white)](#)
 * [![Express.js](https://img.shields.io/badge/Express.js-%23404d59.svg?logo=express&logoColor=%2361DAFB)](#)
+* [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](#)
 
 ## Ejecucion de desarrollo
 
@@ -15,6 +16,7 @@ Instalacion de dependencias
 ```bash
 npm i
 ```
+
 Crear el servidor
 ```bash
 npm run dev

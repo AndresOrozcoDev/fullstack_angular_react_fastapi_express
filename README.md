@@ -45,7 +45,7 @@
 
 ### Ejecucion local
 
-Para una ejecucion rapida y sencilla, se desarrollo una contenerizacion en Docker, asi que es necesario que tengas Docker Desktop y ejecutar el siguiente comando
+Para una ejecucion rapida y sencilla, se desarrollo una contenerizacion en Docker, asi que es necesario que tengas [Docker Desktop](https://www.docker.com/products/docker-desktop/) y ejecutar el siguiente comando
 
 ```bash
 docker-compose up
