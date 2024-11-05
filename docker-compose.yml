@@ -14,3 +14,17 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+
+  react-app:
+    build:
+      context: ./react
+      dockerfile: Dockerfile
+    ports:
+      - "5000:3000"
+
+  angular-app:
+    build:
+      context: ./angular
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
