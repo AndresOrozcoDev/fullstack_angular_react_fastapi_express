@@ -2,7 +2,9 @@ import './App.css';
 
 function App() {
   return (
-    <div></div>
+    <div>
+      <h2>React project</h2>
+    </div>
   );
 }
 
