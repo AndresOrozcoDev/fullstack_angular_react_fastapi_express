@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-button {
+.button {
     background-color: black;
     color: white;
     height: 40px;
+}
+
+.input {
+    border: 1px solid #c3c3c3;
+    height: 40px;
+    padding-inline: 10px;
+}
+
+textarea {
+    min-height: 80px;
 }
