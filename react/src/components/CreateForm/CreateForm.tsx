@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import './create-form.css'
+import './CreateForm.css'
 
 interface Task {
     id: number
@@ -9,7 +9,7 @@ interface Task {
     createdAt: Date
   }
   
-const Form = () => {
+const CreateForm = () => {
     const [tasks, setTasks] = useState<Task[]>([])
     const [editingTask, setEditingTask] = useState<Task | null>(null)
     const [newTask, setNewTask] = useState<Omit<Task, "id" | "createdAt">>({
@@ -38,4 +38,4 @@ const Form = () => {
     )
 }
 
-export default Form;
+export default CreateForm;

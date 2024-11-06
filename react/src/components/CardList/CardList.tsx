@@ -1,9 +1,9 @@
 import React from "react";
 
-const Cards = () => {
+const CardList = () => {
     return (
         <h2>Cards</h2>
     )
 }
 
-export default Cards;
+export default CardList;
