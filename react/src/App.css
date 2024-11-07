@@ -6,6 +6,7 @@
     background-color: black;
     color: white;
     height: 40px;
+    cursor: pointer;
 }
 
 .input {

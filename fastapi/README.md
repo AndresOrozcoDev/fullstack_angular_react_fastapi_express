@@ -31,7 +31,7 @@ fastapi dev main.py
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `API-KEY` | `string` | **Required**. Your API key |
+| `API_KEY` | `string` | **Required**. Your API key |
 
 ```bash
 Response:
@@ -50,7 +50,7 @@ Response:
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `API-KEY` | `string` | **Required**. Your API key |
+| `API_KEY` | `string` | **Required**. Your API key |
 
 ```bash
 Request Body:
@@ -85,7 +85,7 @@ Response:
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `API-KEY` | `string` | **Required**. Your API key |
+| `API_KEY` | `string` | **Required**. Your API key |
 | `id`      | `number` | **Required**. Your ID      |
 
 ```bash
