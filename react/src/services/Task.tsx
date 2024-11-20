@@ -22,7 +22,7 @@ const handleError = (error: any) => {
 
 export const getTasks = async ()  => {
   try {
-    const response = await api.get(`/task`);
+    const response = await api.get(`/tasks`);
     return response.data;
   } catch (error) {
     handleError(error);
@@ -31,7 +31,7 @@ export const getTasks = async ()  => {
 
 export const postTask = async (task: Task) => {
   try {
-    const response = await api.post(`/task`, task);
+    const response = await api.post(`/tasks`, task);
     return response.data;
   } catch (error) {
     handleError(error);
@@ -41,7 +41,7 @@ export const postTask = async (task: Task) => {
 
 export const deleteTask = async (id: number) => {
   try {
-    const response = await api.delete(`/task/${id}`);
+    const response = await api.delete(`/tasks/${id}`);
     return response.data;
   } catch (error) {
     handleError(error);
