@@ -2,7 +2,7 @@ import pytest
 from main import app
 from fastapi.testclient import TestClient
 from unittest.mock import patch, MagicMock
-from app.services.task import TaskServices
+from app.api.services.task import TaskServices
 
 client = TestClient(app)
 

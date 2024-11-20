@@ -1,9 +1,12 @@
-from fastapi import FastAPI, Depends, HTTPException, Security
+from fastapi import FastAPI, Depends, HTTPException, Security, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import APIKeyHeader
+from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
+from fastapi.exceptions import RequestValidationError
 
-from app.database import engine, Base
-from app.routes.main import api_router
+from app.core.database import engine, Base
+from app.api.routes.main import api_router
 
 
 app = FastAPI(
@@ -31,6 +34,33 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Manejador para errores HTTPException
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    return Standard_response(
+        exc.status_code,
+        "Error procesando la solicitud",
+        {"error": exc.detail}
+    )
+
+# Manejador para errores de validación (RequestValidationError)
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    return Standard_response(
+        422,
+        "Datos de entrada no válidos",
+        exc.errors()
+    )
+
+# Manejador para cualquier excepción inesperada
+@app.exception_handler(Exception)
+async def generic_exception_handler(request: Request, exc: Exception):
+    return Standard_response(
+        500,
+        "Ocurrió un error inesperado",
+        str(exc)
+    )
 
 # Creacion y esquema de Header
 api_key_header = APIKeyHeader(name="API_KEY", auto_error=False)

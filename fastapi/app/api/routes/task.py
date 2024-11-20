@@ -2,9 +2,10 @@ from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi import APIRouter, Body, HTTPException, status, Path, Depends
 
-from app.database import Session
-from app.services.task import TaskServices
-from app.interface import Task as TaskInterface, Response
+from app.core.database import Session
+from app.api.services.task import TaskServices
+from app.core.interface import Tasks as TaskInterface, Response
+from app.core.errorHandler import Standard_response
 
 
 router = APIRouter()

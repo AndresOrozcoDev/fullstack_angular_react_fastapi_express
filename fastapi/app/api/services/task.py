@@ -1,6 +1,7 @@
-from app.models import Task as TaskModel
-from app.interface import Task as TaskInterface
 import datetime
+
+from app.core.models import Tasks as TaskModel
+from app.core.interface import Tasks as TaskInterface
 
 
 class TaskServices():

@@ -7,7 +7,7 @@ class Response(BaseModel):
     message: str
     data: list
 
-class Task(BaseModel):
+class Tasks(BaseModel):
     name: str
     description: str
     status: str
