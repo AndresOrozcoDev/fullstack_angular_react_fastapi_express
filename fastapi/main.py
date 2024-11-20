@@ -7,6 +7,7 @@ from fastapi.exceptions import RequestValidationError
 
 from app.core.database import engine, Base
 from app.api.routes.main import api_router
+from app.core.errorHandler import Standard_response
 
 
 app = FastAPI(
@@ -41,7 +42,7 @@ async def http_exception_handler(request: Request, exc: HTTPException):
     return Standard_response(
         exc.status_code,
         "Error procesando la solicitud",
-        {"error": exc.detail}
+        exc.detail
     )
 
 # Manejador para errores de validación (RequestValidationError)
