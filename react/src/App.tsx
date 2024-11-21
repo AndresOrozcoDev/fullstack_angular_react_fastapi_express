@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import './App.css';
 import CardList from './components/CardList';
 import CreateForm from './components/CreateForm';
-import { getTasks, postTask, deleteTask } from './services/Task';
+import { getTasks, postTask, deleteTask, putTask } from './services/Task';
 
 interface Task {
   name: string;
@@ -20,7 +20,7 @@ interface TaskCreated {
 
 function App() {
   const [tasks, setTasks] = useState<TaskCreated[]>([]);
-  const [editingTask, setEditingTask] = useState<Task | null>(null);
+  const [editingTask, setEditingTask] = useState<TaskCreated | null>(null);
   const [newTask, setNewTask] = useState<Task>({
     name: "",
     description: "",
@@ -43,14 +43,21 @@ function App() {
   const onAddTask = async (task: Task) => {
     setIsLoading(true);
     try {
-      await postTask(task);
+      if (editingTask) {
+        // Si hay tarea en edición, actualiza
+        await putTask(editingTask.id, task);  // Necesitas un servicio que actualice
+      } else {
+        // Si no, agrega una nueva tarea
+        await postTask(task);
+      }
       await fetchData();
+      setEditingTask(null);  // Resetea la tarea en edición después de agregar o actualizar
     } catch (error) {
-      console.log("Error agregando ", error);
+      console.log("Error agregando o actualizando tarea", error);
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   const onDeleteTask = async (id: number) => {
     setIsLoading(true);
@@ -64,7 +71,7 @@ function App() {
     }
   };
 
-  const startEditing = (task: Task) => {
+  const startEditing = (task: TaskCreated) => {
     setEditingTask(task);
   };
 

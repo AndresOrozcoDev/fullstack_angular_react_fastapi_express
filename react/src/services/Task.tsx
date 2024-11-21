@@ -38,6 +38,15 @@ export const postTask = async (task: Task) => {
   }
 };
 
+export const putTask = async (id: number, task: Task) => {
+  try {
+    const response = await axios.put(`/tasks/${id}`, task);
+    return response.data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
 
 export const deleteTask = async (id: number) => {
   try {

@@ -18,8 +18,19 @@ const CreateForm: React.FC<CreateFormProps> = ({ task, onAddTask }) => {
         status: "pendiente"
     });
 
-    const handleSubmit = () => {
-        onAddTask(newTask);
+    useEffect(() => {
+        if (task) {
+            setNewTask({
+                name: task.name,
+                description: task.description,
+                status: task.status
+            });
+        }
+    }, [task]); // Solo cuando la tarea cambia (cuando se selecciona una tarea para editar)
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        onAddTask(newTask);  // Al enviar el formulario, se llama a onAddTask para crear o actualizar
     };
 
     return (
@@ -53,9 +64,6 @@ const CreateForm: React.FC<CreateFormProps> = ({ task, onAddTask }) => {
                     <option value="en progreso">En Progreso</option>
                     <option value="completada">Completada</option>
                 </select>
-                {/* <button className="button w-full rounded-lg" onClick={handleSubmit}>
-                    {task ? "Actualizar Tarea" : "Agregar Tarea"}
-                </button> */}
                 <input type="submit" value={task ? "Actualizar Tarea" : "Agregar Tarea"} className="button w-full rounded-lg" />
             </form>
         </div>
