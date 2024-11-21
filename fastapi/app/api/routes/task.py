@@ -46,9 +46,9 @@ async def create_task(task: TaskInterface = Body(), db: Session = Depends(get_db
         )
 
 @router.put('/{id}', response_model=Response)
-async def update_task(id: int = Path(), newStatus: str = Body(), db: Session = Depends(get_db)):
+async def update_task(id: int = Path(), task: TaskInterface = Body(), db: Session = Depends(get_db)):
     try:
-        updated_task = TaskServices(db).update_task(id, newStatus)
+        updated_task = TaskServices(db).update_task(id, task)
         if not updated_task:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Task not found')
         return Standard_response(

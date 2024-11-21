@@ -1,20 +1,20 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import './App.css';
-import CardList from './components/CardList';
-import CreateForm from './components/CreateForm';
-import { getTasks, postTask, deleteTask, putTask } from './services/Task';
+import React, { useState, useEffect, Fragment } from "react";
+import "./App.css";
+import CardList from "./components/CardList";
+import CreateForm from "./components/CreateForm";
+import { getTasks, postTask, deleteTask, putTask } from "./services/Task";
 
 interface Task {
   name: string;
   description: string;
-  status: "pendiente" | "en progreso" | "completada";
+  status: "pendiente" | "progreso" | "completada";
 }
 
 interface TaskCreated {
   id: number;
   name: string;
   description: string;
-  status: "pendiente" | "en progreso" | "completada";
+  status: "pendiente" | "progreso" | "completada";
   created: string;
 }
 
@@ -24,7 +24,7 @@ function App() {
   const [newTask, setNewTask] = useState<Task>({
     name: "",
     description: "",
-    status: "pendiente"
+    status: "pendiente",
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -44,14 +44,12 @@ function App() {
     setIsLoading(true);
     try {
       if (editingTask) {
-        // Si hay tarea en edición, actualiza
-        await putTask(editingTask.id, task);  // Necesitas un servicio que actualice
+        await putTask(editingTask.id, task);
       } else {
-        // Si no, agrega una nueva tarea
         await postTask(task);
       }
       await fetchData();
-      setEditingTask(null);  // Resetea la tarea en edición después de agregar o actualizar
+      setEditingTask(null);
     } catch (error) {
       console.log("Error agregando o actualizando tarea", error);
     } finally {
@@ -89,7 +87,11 @@ function App() {
       <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
         <h1 className="text-2xl font-bold mb-6">Gestor de Tareas</h1>
         <CreateForm task={editingTask} onAddTask={onAddTask} />
-        <CardList tasks={tasks} onEditTask={startEditing} onDeleteTask={deleteTask} />
+        <CardList
+          tasks={tasks}
+          onEditTask={startEditing}
+          onDeleteTask={deleteTask}
+        />
       </div>
     </Fragment>
   );

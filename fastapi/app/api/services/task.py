@@ -35,12 +35,15 @@ class TaskServices():
             self.db.rollback()
             raise HTTPException(status_code=500, detail=f"Error creating task: {str(e)}")
 
-    def update_task(self, id: int, status: str):
+    def update_task(self, id: int, task: TaskInterface):
         existing_task = self.get_task_by_id(id)
         if not existing_task:
             raise HTTPException(status_code=404, detail="Task not found")
-        if status:
-            existing_task.status = status
+        if task:
+            existing_task.name = task.name
+            existing_task.description = task.description
+            existing_task.status = task.status
+            existing_task.updated = datetime.datetime.utcnow()
         existing_task.updated = datetime.datetime.utcnow()
         try:
             self.db.commit()

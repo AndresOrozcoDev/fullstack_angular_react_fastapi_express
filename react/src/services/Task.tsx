@@ -6,13 +6,14 @@ const api = axios.create({
   headers: {
     'API_KEY': 'dev',
     'Accept': 'application/json',
+    'Content-Type': 'application/json'
   },
 });
 
 interface Task {
   name: string;
   description: string;
-  status: "pendiente" | "en progreso" | "completada";
+  status: "pendiente" | "progreso" | "completada";
 }
 
 const handleError = (error: any) => {
@@ -40,7 +41,7 @@ export const postTask = async (task: Task) => {
 
 export const putTask = async (id: number, task: Task) => {
   try {
-    const response = await axios.put(`/tasks/${id}`, task);
+    const response = await api.put(`/tasks/${id}`, task);
     return response.data;
   } catch (error) {
     handleError(error);

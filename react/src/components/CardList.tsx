@@ -5,7 +5,7 @@ interface TaskCreated {
   id: number;
   name: string;
   description: string;
-  status: "pendiente" | "en progreso" | "completada";
+  status: "pendiente" | "progreso" | "completada";
   created: string;
 }
 
@@ -44,9 +44,9 @@ const CardList: React.FC<CardListProps> = ({ tasks, onEditTask, onDeleteTask }) 
             <div className="mt-2 flex items-center">
               <span className="text-sm font-medium mr-2">Estado:</span>
               {task.status === "pendiente" && <XCircle className="h-5 w-5 text-yellow-500" />}
-              {task.status === "en progreso" && <CheckCircle className="h-5 w-5 text-blue-500" />}
+              {task.status === "progreso" && <CheckCircle className="h-5 w-5 text-blue-500" />}
               {task.status === "completada" && <CheckCircle className="h-5 w-5 text-green-500" />}
-              <span className="ml-1 text-sm capitalize">{task.status}</span>
+              <span className="ml-1 text-sm">{task.status}</span>
             </div>
           </div>
         ))
