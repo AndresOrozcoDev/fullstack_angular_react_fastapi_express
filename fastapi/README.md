@@ -23,10 +23,10 @@ fastapi dev main.py
 
 ## Documentacion de API Rest
 
-#### Post login
+#### Get tasks
 
 ```bash
-  GET /api/task
+  GET /api/tasks
 ```
 
 | Parameter | Type     | Description                |
@@ -42,10 +42,10 @@ Response:
     }
 ```
 
-#### Post task
+#### Post tasks
 
 ```bash
-  POST /api/task
+  POST /api/tasks
 ```
 
 | Parameter | Type     | Description                |
@@ -77,10 +77,45 @@ Response:
     }
 ```
 
+#### Put task
+
+```bash
+  PUT /api/tasks/:id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `API_KEY` | `string` | **Required**. Your API key |
+
+```bash
+Request Body:
+    {
+        "name": "task name",
+        "description": "Hacer commit",
+        "status": "completado"
+    }
+```
+
+```bash
+Response:
+    {
+        "status_code": 200,
+        "message": "Tak updated.",
+        "data": [
+            "id": 1,
+            "name": "task name",
+            "description": "Hacer commit",
+            "status": "Completado",
+            "created": "2024-11-07",
+            "updated": "2024-11-07",
+        ]
+    }
+```
+
 #### Delete task
 
 ```bash
-  POST /api/task
+  DELETE /api/tasks/:id
 ```
 
 | Parameter | Type     | Description                |
