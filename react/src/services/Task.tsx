@@ -1,12 +1,12 @@
 import axios from "axios";
-
+import { toast } from "react-toastify";
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:8000/api',
+  baseURL: process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000/api",
   headers: {
-    'API_KEY': 'dev',
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
+    API_KEY: "dev",
+    Accept: "application/json",
+    "Content-Type": "application/json",
   },
 });
 
@@ -17,11 +17,11 @@ interface Task {
 }
 
 const handleError = (error: any) => {
-  console.error('API call error:', error);
+  console.error("API call error:", error);
   throw error;
 };
 
-export const getTasks = async ()  => {
+export const getTasks = async () => {
   try {
     const response = await api.get(`/tasks`);
     return response.data;
@@ -47,7 +47,6 @@ export const putTask = async (id: number, task: Task) => {
     handleError(error);
   }
 };
-
 
 export const deleteTask = async (id: number) => {
   try {

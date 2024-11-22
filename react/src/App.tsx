@@ -1,4 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import CardList from "./components/CardList";
 import CreateForm from "./components/CreateForm";
@@ -18,6 +20,20 @@ interface TaskCreated {
   created: string;
 }
 
+const showToast = (message: string, type: "success" | "warning" | "error") => {
+  toast[type](message, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+};
+
+
 function App() {
   const [tasks, setTasks] = useState<TaskCreated[]>([]);
   const [editingTask, setEditingTask] = useState<TaskCreated | null>(null);
@@ -33,8 +49,12 @@ function App() {
     try {
       const response = await getTasks();
       setTasks(response.data);
-    } catch (error) {
-      console.log("Error al obtener tareas:", error);
+      showToast(response.message, "success");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log("Error al obtener tareas:", error);
+        showToast(error.message, "error");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -86,12 +106,16 @@ function App() {
       )}
       <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
         <h1 className="text-2xl font-bold mb-6">Gestor de Tareas</h1>
-        <CreateForm task={editingTask} onAddTask={onAddTask} />
+        <CreateForm 
+          task={editingTask} 
+          onAddTask={onAddTask} 
+        />
         <CardList
           tasks={tasks}
           onEditTask={startEditing}
           onDeleteTask={deleteTask}
         />
+        <ToastContainer />
       </div>
     </Fragment>
   );
