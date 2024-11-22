@@ -14,10 +14,12 @@ En esta sección se deben incluir los principales frameworks y bibliotecas que s
 
 ## Demo
 
-Link para visualizar el demo
-```bash
-[Panel de Usuarios](https://chimerical-licorice-644a23.netlify.app/)
+Aquí está el enlace para visualizar el demo:
+
+```console
+    [Panel de Usuarios](https://chimerical-licorice-644a23.netlify.app/)
 ```
+
 ## Ejecucion de desarrollo
 
 Instalacion de dependencias
