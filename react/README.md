@@ -12,6 +12,12 @@ En esta sección se deben incluir los principales frameworks y bibliotecas que s
 * [![CSS](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=fff)](#)
 * [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](#)
 
+## Demo
+
+Link para visualizar el demo
+```http
+[Panel de Usuarios](https://chimerical-licorice-644a23.netlify.app/)
+```
 ## Ejecucion de desarrollo
 
 Instalacion de dependencias
