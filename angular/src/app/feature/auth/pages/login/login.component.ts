@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Observable } from 'rxjs';
@@ -18,7 +18,7 @@ export class LoginComponent {
   user$!: Observable<ResponseLogin>;
   isError: boolean = false;
 
-  constructor(private authServices: AuthService) {}
+  constructor(private authServices: AuthService, private router: Router) {}
 
   loginForm = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -35,6 +35,12 @@ export class LoginComponent {
       this.authServices.postLogin(loginData).subscribe(
         (response) => {
           console.warn('Login successful', response);
+          if(response.auth) {
+            localStorage.setItem('token', response.token);
+            this.router.navigate(['/dashboard']);
+          } else {
+            console.error('Login failed', response.auth)
+          }
         },
         (error) => {
           console.error('Login failed', error);

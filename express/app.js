@@ -19,9 +19,9 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Configuración de CORS
 const corsOptions = {
-  origin: ['*'],
+  origin: ['http://localhost:4200'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: ['Content-Type']
+  allowedHeaders: ['Content-Type', 'API_KEY']
 };
 
 app.use(cors(corsOptions));

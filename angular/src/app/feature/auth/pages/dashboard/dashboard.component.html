@@ -1,0 +1,7 @@
+<div *ngIf="userDecoded$?.role === 'admin'">
+    <p>Admin dashboard</p>
+  </div>
+  
+  <div *ngIf="userDecoded$?.role === 'user'">
+    <p>User dashboard</p>
+  </div>

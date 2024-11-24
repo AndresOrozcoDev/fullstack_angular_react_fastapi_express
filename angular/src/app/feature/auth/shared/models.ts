@@ -13,3 +13,10 @@ export interface Response {
     message: string,
     data: any
 }
+
+export interface User {
+    id: number,
+    username: string,
+    password?: string,
+    role: string
+}
