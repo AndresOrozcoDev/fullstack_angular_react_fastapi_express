@@ -19,10 +19,13 @@ exports.login = (req, res) => {
     db.get(`SELECT * FROM users WHERE username = ?`, [username], (err, user) => {
         if (err || !user) return res.status(404).send("Usuario no encontrado.");
         const passwordIsValid = bcrypt.compareSync(password, user.password);
-
         if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
+        const token = jwt.sign({ 
+            id: user.id,
+            username: user.username,
+            role: user.role
+        }, process.env.API_KEY || 'dev', { expiresIn: 86400 });
 
-        const token = jwt.sign({ id: user.id }, process.env.API_KEY, { expiresIn: 86400 });
         res.status(200).send({ auth: true, token });
     });
 };
