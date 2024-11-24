@@ -8,16 +8,15 @@
             <div class="col">
                 <label for="username" class="form-label">Correo Electrónico</label>
                 <input type="text" id="username" class="form-control" formControlName="username">
-                <div *ngIf="false" class="form-text">Este campo es obligatorio.</div>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
                 <label for="password" class="form-label">Contraseña</label>
                 <input type="password" id="password" class="form-control" formControlName="password">
-                <div *ngIf="false" class="form-text">Este campo es obligatorio.</div>
             </div>
         </div>
+        <div *ngIf="isError" class="form-text text-center text-danger mb-2">Ha ocurrido un error en el formulario.</div>
         <div class="row mb-4">
             <div class="col">
                 <input type="submit" [disabled]="!loginForm.valid" value="Iniciar Sesión" class="btn btn-dark w-100">
