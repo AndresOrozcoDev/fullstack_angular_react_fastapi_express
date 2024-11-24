@@ -18,7 +18,7 @@ export class RegisterComponent {
     password: new FormControl('', Validators.required),
   });
 
-  onLogin() {
+  onRegister() {
     console.warn(this.registerForm.value);
   }
 }
