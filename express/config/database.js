@@ -1,15 +1,14 @@
-const sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require("sqlite3").verbose();
+const bcrypt = require('bcryptjs');
 
-// Crea o abre la base de datos SQLite
-const db = new sqlite3.Database('./database.sqlite', (err) => {
+const db = new sqlite3.Database("./database.sqlite", (err) => {
   if (err) {
-    console.error('Error al conectar con la base de datos:', err.message);
+    console.error("Error al conectar con la base de datos:", err.message);
   } else {
-    console.log('Conexión exitosa a la base de datos.');
+    console.log("Conexión exitosa a la base de datos.");
   }
 });
 
-// Crear la tabla 'users' si no existe
 db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS users (
@@ -19,6 +18,27 @@ db.serialize(() => {
       role TEXT DEFAULT 'user'
     )
   `);
+});
+
+// Hashear la contraseña antes de insertarla
+bcrypt.hash("1234", 10, (err, hashedPassword) => {
+  if (err) {
+    console.error("Error al hashear la contraseña:", err.message);
+    return;
+  }
+
+  // Insertar el registro con la contraseña hasheada
+  const stmt = db.prepare(
+    "INSERT OR IGNORE INTO users (username, password, role) VALUES (?, ?, ?)"
+  );
+  stmt.run("admin", hashedPassword, "admin", function (err) {
+    if (err) {
+      console.error("Error al insertar el registro:", err.message);
+    } else {
+      console.log("Registro insertado correctamente");
+    }
+  });
+  stmt.finalize();
 });
 
 module.exports = db;
