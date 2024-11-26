@@ -5,6 +5,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5000:3000"
+    container_name: express-container
 
   fastapi-app:
     build:
@@ -12,6 +13,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+      container_name: fastapi-container
 
   react-app:
     build:
@@ -19,6 +21,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    container_name: react-container
 
   angular-app:
     build:
@@ -26,3 +29,4 @@ services:
       dockerfile: Dockerfile
     ports:
       - "4200:4200"
+      container_name: angular-container
