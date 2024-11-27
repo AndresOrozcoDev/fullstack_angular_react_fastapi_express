@@ -4,7 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { validateTokenGuard } from './guards/validate-token.guard';
+import { validateTokenGuard } from './shared/guards/validate-token.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, title: 'Panel de Administración - Login' },
