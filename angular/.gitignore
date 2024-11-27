@@ -42,4 +42,4 @@ testem.log
 Thumbs.db
 
 # Ignorar el archivo de configuración de producción
-src/environments/environment.prod.ts
+src/environments/environment.ts
