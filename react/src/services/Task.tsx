@@ -1,10 +1,10 @@
 import axios from "axios";
-import { toast } from "react-toastify";
+
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000/api",
+  baseURL: process.env.FASTAPI_URL_API,
   headers: {
-    API_KEY: "dev",
+    API_KEY: process.env.FASTAPI_API_KEY,
     Accept: "application/json",
     "Content-Type": "application/json",
   },
