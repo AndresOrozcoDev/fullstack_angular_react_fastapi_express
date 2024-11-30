@@ -6,6 +6,9 @@ services:
     ports:
       - "5000:3000"
     container_name: express-container
+    image: express-image:latest
+    networks:
+      - app-network
 
   fastapi-app:
     build:
@@ -13,7 +16,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
-      container_name: fastapi-container
+    container_name: fastapi-container
+    image: fastapi-image:latest
+    networks:
+      - app-network
 
   react-app:
     build:
@@ -22,6 +28,9 @@ services:
     ports:
       - "3000:3000"
     container_name: react-container
+    image: react-image:latest
+    networks:
+      - app-network
 
   angular-app:
     build:
@@ -29,4 +38,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - "4200:4200"
-      container_name: angular-container
+    container_name: angular-container
+    image: angular-image:latest
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
