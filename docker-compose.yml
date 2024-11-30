@@ -4,7 +4,7 @@ services:
       context: ./express
       dockerfile: Dockerfile
     ports:
-      - "5000:3000"
+      - "5000:5000"
     container_name: express-container
     image: express-image:latest
     networks:
@@ -26,7 +26,7 @@ services:
       context: ./react
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3000:80"
     container_name: react-container
     image: react-image:latest
     networks:
@@ -37,7 +37,7 @@ services:
       context: ./angular
       dockerfile: Dockerfile
     ports:
-      - "4200:4200"
+      - "4200:80"
     container_name: angular-container
     image: angular-image:latest
     networks:
