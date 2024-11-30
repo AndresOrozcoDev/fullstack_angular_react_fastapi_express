@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from '../../shared/models';
+import { User } from '@auth/shared/models';
 import { jwtDecode } from 'jwt-decode';
 import { CommonModule } from '@angular/common';
 

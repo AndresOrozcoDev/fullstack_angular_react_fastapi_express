@@ -1,10 +1,10 @@
+import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '@auth/services/auth.service';
+import { Login, ResponseLogin } from '@auth/shared/models';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { Observable } from 'rxjs';
-import { Login, ResponseLogin } from '../../shared/models';
 
 @Component({
   selector: 'app-login',

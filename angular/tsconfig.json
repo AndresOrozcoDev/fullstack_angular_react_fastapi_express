@@ -22,7 +22,14 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@auth/*": ["src/app/feature/auth/*"],  // Alias para la feature auth
+      "@auth/pages/*": ["src/app/feature/auth/pages/*"],  // Alias para páginas dentro de auth
+      "@auth/services/*": ["src/app/feature/auth/services/*"],  // Alias para servicios dentro de auth
+      "@auth/shared/*": ["src/app/feature/auth/shared/*"],  // Alias para shared dentro de auth
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

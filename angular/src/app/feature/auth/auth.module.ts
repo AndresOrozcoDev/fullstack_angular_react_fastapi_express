@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
-import { apiKeyInterceptor } from './shared/interceptors/api-key.interceptor';
+import { LoginComponent } from '@auth/pages/login/login.component';
+import { RegisterComponent } from '@auth/pages/register/register.component';
+import { apiKeyInterceptor } from '@auth/shared/interceptors/api-key.interceptor';
+import { ForgetPasswordComponent } from '@auth/pages/forget-password/forget-password.component';
 
 
 @NgModule({
