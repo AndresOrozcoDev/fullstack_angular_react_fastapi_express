@@ -5,7 +5,7 @@ interface TaskCreated {
   id: number;
   name: string;
   description: string;
-  status: "pendiente" | "progreso" | "completada";
+  status: "" | "pendiente" | "progreso" | "completada";
   created: string;
 }
 

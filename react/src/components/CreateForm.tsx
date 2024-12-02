@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 interface Task {
   name: string;
   description: string;
-  status: "pendiente" | "progreso" | "completada";
+  status: "" | "pendiente" | "progreso" | "completada";
 }
 
 interface CreateFormProps {
@@ -15,7 +15,7 @@ const CreateForm: React.FC<CreateFormProps> = ({ task, onAddTask }) => {
   const [newTask, setNewTask] = useState<Task>({
     name: "",
     description: "",
-    status: "pendiente",
+    status: "",
   });
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const CreateForm: React.FC<CreateFormProps> = ({ task, onAddTask }) => {
       setNewTask({
         name: "",
         description: "",
-        status: "pendiente",
+        status: "",
       });
     }
   }, [task]);
@@ -69,10 +69,11 @@ const CreateForm: React.FC<CreateFormProps> = ({ task, onAddTask }) => {
           onChange={(e) =>
             setNewTask({
               ...newTask,
-              status: e.target.value as "pendiente" | "progreso" | "completada",
+              status: e.target.value as "" | "pendiente" | "progreso" | "completada",
             })
           }
         >
+          <option value="" disabled>Estado de la tarea</option>
           <option value="pendiente">pendiente</option>
           <option value="progreso">progreso</option>
           <option value="completada">completada</option>

@@ -13,7 +13,7 @@ const api = axios.create({
 interface Task {
   name: string;
   description: string;
-  status: "pendiente" | "progreso" | "completada";
+  status: "" | "pendiente" | "progreso" | "completada";
 }
 
 const handleError = (error: any) => {
