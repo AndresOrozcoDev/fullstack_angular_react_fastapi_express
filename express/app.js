@@ -10,7 +10,7 @@ const errorHandler = require('./middleware/errorHandler');
 const db = require('./config/database');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT_EXPRESS || 5000;
 
 app.use(bodyParser.json());
 
