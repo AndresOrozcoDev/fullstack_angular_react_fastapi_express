@@ -7,15 +7,15 @@
         <div class="row mb-3">
             <div class="col">
                 <label for="username" class="form-label">Correo Electrónico</label>
-                <input type="text" id="username" class="form-control" formControlName="username">
+                <input type="email" id="username" class="form-control" formControlName="username" placeholder="example@email.com" required>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col position-relative">
                 <label for="password" class="form-label">Contraseña</label>
-                <input [type]="isShowPassword ? 'text' : 'password'" id="password" class="form-control" formControlName="password">
-                <mat-icon *ngIf="isShowPassword" (click)="switchPassword()" class="position-absolute icon--input" aria-hidden="true" fontIcon="visibility_off" role="img" title="Hide"></mat-icon>
-                <mat-icon *ngIf="!isShowPassword" (click)="switchPassword()" class="position-absolute icon--input" aria-hidden="true" fontIcon="visibility" role="img" title="Show"></mat-icon>
+                <input [type]="isShowPassword ? 'text' : 'password'" id="password" class="form-control" formControlName="password" placeholder="****" required>
+                <mat-icon *ngIf="isShowPassword" (click)="switchPassword()" class="position-absolute icon--input" aria-label="Hide password" fontIcon="visibility_off" role="button"></mat-icon>
+                <mat-icon *ngIf="!isShowPassword" (click)="switchPassword()" class="position-absolute icon--input" aria-label="Show password" fontIcon="visibility" role="button"></mat-icon>
             </div>
         </div>
         <div *ngIf="isError" class="form-text text-center text-danger mb-2">Ha ocurrido un error en el formulario.</div>
@@ -26,8 +26,8 @@
         </div>
         <div class="row form__opts">
             <div class="col">
-                <p class="text-center text-primary mb-1"><a routerLink="/forget-password" class="">¿Olvidaste tu contraseña?</a></p>
-                <p class="text-center">¿Ya tienes cuenta?<a routerLink="/register" class="text-primary"> Registro</a></p>
+                <p class="text-center text-primary mb-1"><a routerLink="/forget-password" title="Restablecer mi contraseña" aria-label="Enlace para restablecer tu contraseña">¿Olvidaste tu contraseña?</a></p>
+                <p class="text-center">¿Ya tienes cuenta?<a routerLink="/register" title="Crear una cuenta" aria-label="Enlace para registrarte"> Registro</a></p>
             </div>
         </div>
     </form>

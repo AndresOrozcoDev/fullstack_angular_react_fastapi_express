@@ -1,5 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
+* {
+    font-family: 'FilsonPro', Arial, Helvetica, sans-serif;
+}
+
 body{
     height: 100vh;
 }
+
+@font-face {
+    font-family: 'FilsonPro';
+    src: url('./assets/fonts/FilsonProRegular.otf') format('truetype');
+  }

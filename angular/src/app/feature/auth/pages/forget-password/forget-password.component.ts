@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
@@ -16,8 +17,15 @@ export class ForgetPasswordComponent {
     username: new FormControl('', Validators.required),
   });
 
+  constructor(private router: Router) {}
+
   onForget() {
-    console.warn(this.forgetForm.value);
+    const username = this.forgetForm.value.username || '';
+    if (username) {
+      this.router.navigate(['']);
+    } else {
+      console.error('Form empty:', this.forgetForm.value);
+    }
   }
 
 }
