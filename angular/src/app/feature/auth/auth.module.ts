@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 
 import { AuthRoutingModule } from './auth-routing.module';
@@ -16,7 +17,8 @@ import { ForgetPasswordComponent } from '@auth/pages/forget-password/forget-pass
     AuthRoutingModule,
     LoginComponent,
     RegisterComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    MatIconModule
   ],
   providers: [
     provideHttpClient(),

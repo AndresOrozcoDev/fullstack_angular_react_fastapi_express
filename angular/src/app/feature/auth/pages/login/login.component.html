@@ -11,9 +11,11 @@
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col">
+            <div class="col position-relative">
                 <label for="password" class="form-label">Contraseña</label>
-                <input type="password" id="password" class="form-control" formControlName="password">
+                <input [type]="isShowPassword ? 'text' : 'password'" id="password" class="form-control" formControlName="password">
+                <mat-icon *ngIf="isShowPassword" (click)="switchPassword()" class="position-absolute icon--input" aria-hidden="true" fontIcon="visibility_off" role="img" title="Hide"></mat-icon>
+                <mat-icon *ngIf="!isShowPassword" (click)="switchPassword()" class="position-absolute icon--input" aria-hidden="true" fontIcon="visibility" role="img" title="Show"></mat-icon>
             </div>
         </div>
         <div *ngIf="isError" class="form-text text-center text-danger mb-2">Ha ocurrido un error en el formulario.</div>
