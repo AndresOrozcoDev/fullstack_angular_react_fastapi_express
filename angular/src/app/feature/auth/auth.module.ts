@@ -8,6 +8,7 @@ import { LoginComponent } from '@auth/pages/login/login.component';
 import { RegisterComponent } from '@auth/pages/register/register.component';
 import { apiKeyInterceptor } from '@auth/shared/interceptors/api-key.interceptor';
 import { ForgetPasswordComponent } from '@auth/pages/forget-password/forget-password.component';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ForgetPasswordComponent } from '@auth/pages/forget-password/forget-pass
     LoginComponent,
     RegisterComponent,
     ForgetPasswordComponent,
-    MatIconModule
+    MatIconModule,
+    LoadingComponent
   ],
   providers: [
     provideHttpClient(),

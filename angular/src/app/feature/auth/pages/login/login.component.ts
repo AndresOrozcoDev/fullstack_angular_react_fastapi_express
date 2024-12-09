@@ -7,6 +7,7 @@ import { AuthService } from '@auth/services/auth.service';
 import { Login, ResponseLogin } from '@auth/shared/models';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { LoadingService } from '@auth/services/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,12 @@ export class LoginComponent {
   isError: boolean = false;
   isShowPassword: boolean = false;
 
-  constructor(private authServices: AuthService, private router: Router, private toastr: ToastrService) {}
+  constructor(
+    private authServices: AuthService, 
+    private router: Router, 
+    private toastr: ToastrService,
+    private loadingService: LoadingService
+  ) {}
 
   loginForm = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -35,6 +41,7 @@ export class LoginComponent {
     };
     if (loginData.username && loginData.password) {
       this.isError = false;
+      this.loadingService.show();
       this.authServices.postLogin(loginData).subscribe(
         (response) => {
           console.warn('Login successful', response);
@@ -46,11 +53,15 @@ export class LoginComponent {
           }
         },
         (error) => {
+          this.loginForm.reset();
+          this.loadingService.hide();
           console.error('Login failed', error);
           this.toastr.error(error.message , 'Error');
         }
       );
     } else {
+      this.loginForm.reset();
+      this.loadingService.hide();
       this.isError = true;
       this.toastr.error('Los campos no pueden estar vacios.', 'Error');
     }
