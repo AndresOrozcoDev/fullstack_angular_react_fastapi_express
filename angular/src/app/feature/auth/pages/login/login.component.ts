@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { Login, ResponseLogin } from '@auth/shared/models';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent {
   isError: boolean = false;
   isShowPassword: boolean = false;
 
-  constructor(private authServices: AuthService, private router: Router) {}
+  constructor(private authServices: AuthService, private router: Router, private toastr: ToastrService) {}
 
   loginForm = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -46,11 +47,12 @@ export class LoginComponent {
         },
         (error) => {
           console.error('Login failed', error);
+          this.toastr.error(error.message , 'Error');
         }
       );
     } else {
       this.isError = true;
-      console.warn('Username or password is missing');
+      this.toastr.error('Los campos no pueden estar vacios.', 'Error');
     }
   }
 
