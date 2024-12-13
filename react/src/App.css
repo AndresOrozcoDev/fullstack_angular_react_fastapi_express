@@ -18,6 +18,7 @@ body {
   src: url("./assets/fonts/FilsonProRegular.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 .button {
