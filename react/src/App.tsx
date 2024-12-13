@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import "./App.css";
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import CardList from "./components/CardList";
@@ -23,19 +23,6 @@ interface TaskCreated {
   created: string;
 }
 
-const showToast = (message: string, type: "success" | "warning" | "error") => {
-  toast[type](message, {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-  });
-};
-
 
 function App() {
 
@@ -54,11 +41,9 @@ function App() {
     try {
       const response = await getTasks();
       setTasks(response.data);
-      showToast(response.message, "success");
     } catch (error: unknown) {
       if (error instanceof Error) {
-        console.log("Error al obtener tareas:", error);
-        showToast(error.message, "error");
+        console.error(error);
       }
     } finally {
       setIsLoading(false);
