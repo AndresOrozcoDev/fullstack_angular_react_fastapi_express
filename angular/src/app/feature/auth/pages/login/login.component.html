@@ -13,7 +13,7 @@
         <div class="row mb-3">
             <div class="col position-relative">
                 <label for="password" class="form-label">Contraseña</label>
-                <input [type]="isShowPassword ? 'text' : 'password'" id="password" class="form-control" formControlName="password" placeholder="****" required>
+                <input [type]="isShowPassword ? 'text' : 'password'" id="password" class="form-control" formControlName="password" placeholder="********" required>
                 <mat-icon *ngIf="isShowPassword" (click)="switchPassword()" class="position-absolute icon--input" aria-label="Hide password" fontIcon="visibility_off" role="button"></mat-icon>
                 <mat-icon *ngIf="!isShowPassword" (click)="switchPassword()" class="position-absolute icon--input" aria-label="Show password" fontIcon="visibility" role="button"></mat-icon>
             </div>
