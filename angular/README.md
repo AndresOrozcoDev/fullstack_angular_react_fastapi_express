@@ -14,7 +14,7 @@ En esta sección se deben incluir los principales frameworks y bibliotecas que s
 
 ## Demo
 
-Aquí está el enlace para visualizar el demo: [Portal](https://incomparable-gumdrop-472cf6.netlify.app/)
+Aquí está el enlace para visualizar el demo: [Portal de administrador](https://incomparable-gumdrop-472cf6.netlify.app/)
 
 ## Ejecucion de desarrollo
 
