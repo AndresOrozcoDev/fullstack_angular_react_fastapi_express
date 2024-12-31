@@ -40,6 +40,10 @@ Pruebas unitarias
 npm test
 ```
 
+### Libreria de iconos
+
+Se usa `lucid-react` por su ligero peso y compatibilidad con React JS, para la [docuemntación](https://lucide.dev/guide/packages/lucide-react) y visualizar los [Iconos](https://lucide.dev/icons/)
+
 ## Autor
 
 [@AndresOrozcoDev](https://github.com/AndresOrozcoDev)

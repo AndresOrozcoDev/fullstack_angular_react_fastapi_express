@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "FilsonPro", Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "FilsonPro";
+  src: url("./assets/fonts/FilsonProRegular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.button {
+  background-color: black;
+  color: white;
+  height: 40px;
+  cursor: pointer;
+}
+
+.input {
+  border: 1px solid #c3c3c3;
+  height: 40px;
+  padding-inline: 10px;
+}
+
+textarea {
+  min-height: 80px;
+}

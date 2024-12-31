@@ -1,13 +1,13 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { Sun, Moon } from "lucide-react";
 import "./App.css";
 
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import CardList from "./components/CardList";
 import CreateForm from "./components/CreateForm";
 import { getTasks, postTask, deleteTask, putTask } from "./services/Task";
-
 
 interface Task {
   name: string;
@@ -23,18 +23,16 @@ interface TaskCreated {
   created: string;
 }
 
-
 function App() {
-
   const [tasks, setTasks] = useState<TaskCreated[]>([]);
   const [editingTask, setEditingTask] = useState<TaskCreated | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [newTask, setNewTask] = useState<Task>({
     name: "",
     description: "",
     status: "pendiente",
   });
-
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -49,7 +47,6 @@ function App() {
       setIsLoading(false);
     }
   };
-
 
   const onAddTask = async (task: Task) => {
     setIsLoading(true);
@@ -68,7 +65,6 @@ function App() {
     }
   };
 
-
   const onDeleteTask = async (id: number) => {
     setIsLoading(true);
     try {
@@ -81,21 +77,16 @@ function App() {
     }
   };
 
-
   const startEditing = (task: TaskCreated) => {
     setEditingTask(task);
   };
-
 
   useEffect(() => {
     fetchData();
   }, []);
 
-
   return (
-
     <Fragment>
-
       {isLoading && (
         <div className="bg-loader">
           <div className="loader-text">Loading...</div>
@@ -105,10 +96,7 @@ function App() {
       <div className="mx-auto p-4 sm:p-6 lg:p-8 min-h-screen flex flex-col bg-slate-50">
         <h1 className="text-2xl font-bold mb-6">Gestor de Tareas</h1>
 
-        <CreateForm 
-          task={editingTask} 
-          onAddTask={onAddTask} 
-        />
+        <CreateForm task={editingTask} onAddTask={onAddTask} />
 
         <CardList
           tasks={tasks}
@@ -117,9 +105,12 @@ function App() {
         />
 
         <ToastContainer />
-        
-      </div>
 
+        <div className="container__mode" onClick={() => setIsDarkMode(!isDarkMode)}>
+          {isDarkMode ? <Moon /> : <Sun />}
+        </div>
+
+      </div>
     </Fragment>
   );
 }
