@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import CardList from "./components/CardList";
 import CreateForm from "./components/CreateForm";
 import { getTasks, postTask, deleteTask, putTask } from "./services/Task";
+import { useTheme } from "./context/ThemeContext";
 
 interface Task {
   name: string;
@@ -27,12 +28,13 @@ function App() {
   const [tasks, setTasks] = useState<TaskCreated[]>([]);
   const [editingTask, setEditingTask] = useState<TaskCreated | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [newTask, setNewTask] = useState<Task>({
     name: "",
     description: "",
     status: "pendiente",
   });
+
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -93,7 +95,11 @@ function App() {
         </div>
       )}
 
-      <div className="mx-auto p-4 sm:p-6 lg:p-8 min-h-screen flex flex-col bg-slate-50">
+      <div
+        className={`mx-auto p-4 sm:p-6 lg:p-8 min-h-screen flex flex-col ${
+          isDarkMode ? "bg-gray-800 text-white" : "bg-slate-50 text-black"
+        }`}
+      >
         <h1 className="text-2xl font-bold mb-6">Gestor de Tareas</h1>
 
         <CreateForm task={editingTask} onAddTask={onAddTask} />
@@ -106,10 +112,9 @@ function App() {
 
         <ToastContainer />
 
-        <div className="container__mode" onClick={() => setIsDarkMode(!isDarkMode)}>
-          {isDarkMode ? <Moon /> : <Sun />}
+        <div className="container__mode" onClick={toggleTheme}>
+          {isDarkMode ? <Sun /> : <Moon />}
         </div>
-
       </div>
     </Fragment>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 interface Task {
   name: string;
@@ -17,6 +18,8 @@ const CreateForm: React.FC<CreateFormProps> = ({ task, onAddTask }) => {
     description: "",
     status: "",
   });
+
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     if (task) {
@@ -41,7 +44,7 @@ const CreateForm: React.FC<CreateFormProps> = ({ task, onAddTask }) => {
 
   return (
     <div className="bg-white shadow-md rounded-lg p-4 mb-6">
-      <h2 className="text-xl font-semibold mb-4 text-center">
+      <h2 className="text-xl font-semibold mb-4 text-center text-black">
         {task ? "Editar Tarea" : "Crear Nueva Tarea"}
       </h2>
       <form className="space-y-4" onSubmit={handleSubmit}>
@@ -64,16 +67,22 @@ const CreateForm: React.FC<CreateFormProps> = ({ task, onAddTask }) => {
         />
         <select
           value={newTask.status}
-          className="input w-full rounded-lg"
+          className="input w-full rounded-lg text-black"
           required
           onChange={(e) =>
             setNewTask({
               ...newTask,
-              status: e.target.value as "" | "pendiente" | "progreso" | "completada",
+              status: e.target.value as
+                | ""
+                | "pendiente"
+                | "progreso"
+                | "completada",
             })
           }
         >
-          <option value="" disabled>Estado de la tarea</option>
+          <option value="" disabled>
+            Estado de la tarea
+          </option>
           <option value="pendiente">pendiente</option>
           <option value="progreso">progreso</option>
           <option value="completada">completada</option>
