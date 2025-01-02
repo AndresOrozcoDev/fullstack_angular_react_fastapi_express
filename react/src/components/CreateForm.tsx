@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useTheme } from "../context/ThemeContext";
 
 interface Task {
   name: string;
@@ -18,8 +17,6 @@ const CreateForm: React.FC<CreateFormProps> = ({ task, onAddTask }) => {
     description: "",
     status: "",
   });
-
-  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     if (task) {
