@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: MyDockerComposeApp
+    name: MyFullStackApp
     env: docker
     dockerfilePath: ./docker-compose.yml
     plan: free
