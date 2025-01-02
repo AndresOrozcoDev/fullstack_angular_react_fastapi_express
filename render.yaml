@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: MyDockerComposeApp
+    env: docker
+    dockerfilePath: ./docker-compose.yml
+    plan: free
