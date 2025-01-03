@@ -89,5 +89,5 @@ Base.metadata.create_all(bind=engine)
 
 # Ejecución de la aplicación
 if __name__ == "__main__":
-    port = PORT_FASTAPI
+    port = int(os.getenv("PORT", PORT_FASTAPI))
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
