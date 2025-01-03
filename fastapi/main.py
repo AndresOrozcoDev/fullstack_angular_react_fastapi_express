@@ -1,3 +1,6 @@
+import os
+import uvicorn
+
 from fastapi import FastAPI, Depends, HTTPException, Security, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import APIKeyHeader
@@ -9,6 +12,9 @@ from app.core.database import engine, Base
 from app.api.routes.main import api_router
 from app.core.errorHandler import Standard_response
 
+# Variables de entorno
+API_KEY = os.getenv("API_KEY", "dev")
+PORT_FASTAPI = int(os.getenv("PORT_FASTAPI", 8000))
 
 app = FastAPI(
     title='FastAPI',
@@ -21,7 +27,7 @@ app = FastAPI(
     },
     servers=[
         {
-            "url": "http://localhost:8000",
+            "url": f"http://localhost:{PORT_FASTAPI}",
             "description": "Local server",
         },
     ],
@@ -65,7 +71,6 @@ async def generic_exception_handler(request: Request, exc: Exception):
 
 # Creacion y esquema de Header
 api_key_header = APIKeyHeader(name="API_KEY", auto_error=False)
-API_KEY = "dev"
 
 # Función para validar la API key
 def get_api_key(api_key: str = Security(api_key_header)):
@@ -81,3 +86,8 @@ app.include_router(api_router, dependencies=[Depends(get_api_key)])
 
 # Instancia de la base de datos
 Base.metadata.create_all(bind=engine)
+
+# Ejecución de la aplicación
+if __name__ == "__main__":
+    port = PORT_FASTAPI
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)

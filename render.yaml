@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: MyFullStackApp
-    env: docker
-    dockerfilePath: ./docker-compose.yml
-    plan: free
