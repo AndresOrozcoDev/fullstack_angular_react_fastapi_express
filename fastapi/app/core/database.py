@@ -1,8 +1,8 @@
 import os
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm.session import sessionmaker
 from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm.session import sessionmaker
 
 
 sqlite_database = "../../database.sqlite"

@@ -10,6 +10,10 @@ En esta sección se deben incluir los principales frameworks y bibliotecas que s
 * [![FastAPI](https://img.shields.io/badge/FastAPI-009485.svg?logo=fastapi&logoColor=white)](#)
 * [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](#)
 
+## Demo
+
+Aquí está el enlace para visualizar la documentacion de Swagger: [Servicios Web](https://fullstack-angular-react-fastapi-express.onrender.com/docs)
+
 ## Ejecucion de desarrollo
 
 Activar entorno virtual
@@ -18,7 +22,7 @@ env\Scripts\activate
 ```
 
 ```bash
-fastapi dev main.py
+python main.py
 ```
 
 ## Documentacion de API Rest

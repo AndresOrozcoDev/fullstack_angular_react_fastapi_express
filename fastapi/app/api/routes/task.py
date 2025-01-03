@@ -1,11 +1,11 @@
-from fastapi import APIRouter, Body, HTTPException, status, Path, Depends
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
+from fastapi import APIRouter, Body, HTTPException, status, Path, Depends
 
 from app.core.database import Session
 from app.api.services.task import TaskServices
-from app.core.interface import Tasks as TaskInterface, Response
 from app.core.errorHandler import Standard_response
+from app.core.interface import Tasks as TaskInterface, Response
 
 
 router = APIRouter()
@@ -29,6 +29,7 @@ async def get_tasks(db: Session = Depends(get_db)):
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
+
 @router.post('', response_model=Response)
 async def create_task(task: TaskInterface = Body(), db: Session = Depends(get_db)):
     try:
@@ -45,6 +46,7 @@ async def create_task(task: TaskInterface = Body(), db: Session = Depends(get_db
             data=[]
         )
 
+
 @router.put('/{id}', response_model=Response)
 async def update_task(id: int = Path(), task: TaskInterface = Body(), db: Session = Depends(get_db)):
     try:
@@ -60,6 +62,7 @@ async def update_task(id: int = Path(), task: TaskInterface = Body(), db: Sessio
         raise e
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
 
 @router.delete('/{id}')
 async def delete_task(id: int = Path(), db: Session = Depends(get_db)):
