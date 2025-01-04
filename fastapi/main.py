@@ -17,6 +17,7 @@ from app.core.exception_handlers import add_exception_handlers
 # Variables de entorno
 PORT_FASTAPI = int(os.getenv("PORT_FASTAPI", 8000))
 
+# Configuracion de Swagger
 app = FastAPI(
     title='FastAPI',
     description='HTTP services.',
