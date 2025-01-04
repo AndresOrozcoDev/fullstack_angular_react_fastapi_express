@@ -12,7 +12,7 @@ const db = require('./config/database');
 const app = express();
 const PORT = process.env.PORT_EXPRESS || 5000;
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Configuración de Swagger
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
@@ -26,7 +26,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.options('*', cors(corsOptions));
 
 // Ruta para servir el archivo JSON de OpenAPI
 app.get('/openapi.json', (req, res) => {
