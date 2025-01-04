@@ -1,56 +1,103 @@
-# Plataforma para gestión de tareas
+# Plataforma Fullstack para Gestión de Tareas
 
-### Estructura del Proyecto
+## Estructura del Proyecto
 
-#### Frontend
+El proyecto está compuesto por dos frontends y dos backends que trabajan en conjunto para proporcionar una solución completa para la autenticación y la gestión de tareas.
 
-- Mini Frontend en Angular [Portal de administrador](https://incomparable-gumdrop-472cf6.netlify.app/)
-    Autenticación: Login para usuarios administrativos.
-    Gestión de Tareas: CRUD de tareas (crear, leer, actualizar y eliminar).
-    Filtros por estado de las tareas (pendiente, en progreso, completada).
-    Visualización de estadísticas básicas (número de tareas por estado).
-- Mini Frontend en React [Panel de Usuarios](https://chimerical-licorice-644a23.netlify.app/)
-    Autenticación: Registro y login para usuarios regulares.
-    Gestión de Tareas: CRUD de tareas (crear, leer, actualizar y eliminar).
-    Filtros por nombre de tareas.
-    Opción para marcar tareas como completadas.
+### Frontends
 
-#### Backend
+#### **Angular**
+- **Funcionalidad principal:** Autenticación.
+- **Características:**
+  - Registro, inicio de sesión y recuperación de contraseña.
+  - Control de acceso según roles (`admin` o `user`).
+  - Interfaz adaptable a cualquier dispositivo (responsive).
+  - Notificaciones visuales para éxitos, errores o advertencias.
 
-- FastAPI [Servicios Web Tareas](https://fullstack-angular-react-fastapi-express.onrender.com/docs)
-    API RESTful para CRUD de tareas.
-    Implementación de autenticación JWT para proteger las rutas.
-    Conexión a la base de datos SQLite para almacenar las tareas.
-- Express [Servicios Web Usuarios](https://fullstack-angular-react-fastapi-express-1.onrender.com/docs/)
-    API RESTful para la gestión de usuarios (registro, autenticación y gestión).
-    Implementación de autenticación JWT para proteger las rutas.
-    Conexión a la base de datos SQLite para almacenar los usuarios.
+#### **React**
+- **Funcionalidad principal:** Gestión de tareas.
+- **Características:**
+  - CRUD de tareas (crear, leer, actualizar y eliminar).
+  - Marcar tareas como completadas.
+  - Interfaz adaptable a cualquier dispositivo (responsive).
+  - Notificaciones visuales para éxitos, errores o advertencias.
 
-#### Base de Datos
+### Backends
 
-- SQLite
-    Tablas para usuarios (con campos como id, nombre, correo, contraseña hash).
-    Tablas para tareas (con campos como id, título, descripción, estado, fecha de creacion, fecha de actualizacion).
+#### **Express**
+- **Funcionalidad principal:** Gestión de usuarios.
+- **Características:**
+  - API RESTful para gestión de usuarios.
+  - Seguridad mediante JWT para protección de contraseñas.
+  - Rutas protegidas por un `header API_KEY`.
+  - Manejo de errores con mensajes claros y estados de respuesta adecuados.
+  - Documentacion con Swagger.
 
-#### Seguridad
+#### **FastAPI**
+- **Funcionalidad principal:** Gestión de tareas.
+- **Características:**
+  - API RESTful para el CRUD de tareas.
+  - Rutas protegidas por un `header API_KEY`.
+  - Manejo de errores con mensajes claros y estados de respuesta adecuados.
+  - Documentacion con Swagger.
 
-- JWT
-    Utiliza JWT para asegurar las rutas tanto en FastAPI como en Express, permitiendo solo el acceso a los usuarios autenticados.
+### Base de Datos
+- **SQLite**
+  - **Tabla `user`:** Maneja usuarios con campos como `id`, `nombre`, `correo`, `rol` y `contraseña` (almacenada como hash).
+  - **Tabla `task`:** Maneja tareas con campos como `id`, `título`, `descripción`, `estado`, `fecha_creación`, y `fecha_actualización`.
 
-#### Funcionalidades Adicionales
+---
 
-- Manejo de Errores: Asegúrate de implementar un manejo de errores efectivo en ambas APIs.
-- Interfaz de Usuario: Asegúrate de que la interfaz sea intuitiva, con mensajes claros sobre el estado de las acciones (éxitos y errores).
-- Pruebas: Incluye pruebas unitarias y de integración para ambos backends y las funciones críticas de los frontends.
+## Ejecución Local
 
-### Ejecucion local
+### Dependencias Individuales
+Cada carpeta en el directorio raíz (`angular`, `react`, `express`, `fastapi`) contiene un README con instrucciones detalladas y comandos para configurar y ejecutar cada parte del proyecto localmente.
 
-Para una ejecucion rapida y sencilla, se desarrollo una contenerizacion en Docker, asi que es necesario que tengas [Docker Desktop](https://www.docker.com/products/docker-desktop/) y ejecutar el siguiente comando
+### Ejecución con Docker Compose
+Para ejecutar todos los proyectos de forma paralela:
+1. Asegúrate de tener instalado Docker Desktop.
+2. Ejecuta el siguiente comando desde la raíz del proyecto:
 
 ```bash
 docker-compose up
 ```
 
+Esto iniciará todos los servicios (frontends y backends) en contenedores Docker.
+
+---
+
+## Despliegue
+
+- **Frontends:** Desplegados en **Netlify**.
+  - [Portal de administrador](https://incomparable-gumdrop-472cf6.netlify.app/)
+  - [Panel de Usuarios](https://chimerical-licorice-644a23.netlify.app/)
+- **Backends:** Desplegados en **Render**.
+  - [Servicios Web Usuarios](https://fullstack-angular-react-fastapi-express-1.onrender.com/docs/)
+  - [Servicios Web Tareas](https://fullstack-angular-react-fastapi-express.onrender.com/docs)
+
+---
+
+## Funcionalidades Adicionales
+
+- **Seguridad:**
+  - Uso de JWT para autenticación y autorización.
+  - Protección de rutas con `API_KEY`.
+
+- **Notificaciones:**
+  - Los frontends muestran mensajes de éxito, error o advertencia para todas las operaciones.
+
+- **Manejo de errores:**
+  - Mensajes claros y estados de respuesta adecuados en ambos backends.
+
+- **Responsive Design:**
+  - Ambos frontends están diseñados para adaptarse a cualquier tamaño de pantalla.
+
+---
+
 ## Autor
 
-[@AndresOrozcoDev](https://github.com/AndresOrozcoDev)
+**Andrés Orozco**
+- [GitHub](https://github.com/AndresOrozcoDev)
+- [LinkedIn](https://www.linkedin.com/in/andresorozcodev/)
+
+---
