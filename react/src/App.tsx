@@ -90,8 +90,8 @@ function App() {
   return (
     <Fragment>
       {isLoading && (
-        <div className="bg-loader">
-          <div className="loader-text">Loading...</div>
+        <div className="loading-overlay">
+          <div className="spinner"></div>
         </div>
       )}
 

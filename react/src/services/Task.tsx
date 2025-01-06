@@ -4,9 +4,9 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_FASTAPI_URL_API,
+  baseURL: process.env.REACT_APP_FASTAPI_URL_API || "http://localhost:8000/api",
   headers: {
-    API_KEY: process.env.REACT_APP_FASTAPI_API_KEY,
+    API_KEY: process.env.REACT_APP_FASTAPI_API_KEY || "dev",
     Accept: "application/json",
     "Content-Type": "application/json",
   },
