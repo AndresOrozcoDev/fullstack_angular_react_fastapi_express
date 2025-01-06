@@ -15,9 +15,13 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: 'http://localhost:5000',
         description: 'Local server',
       },
+      {
+        url: 'https://fullstack-angular-react-fastapi-express-1.onrender.com/',
+        description: 'Development server',
+      }
     ],
     tags: [
       {
