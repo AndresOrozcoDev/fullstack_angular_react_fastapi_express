@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
@@ -8,6 +8,7 @@ import { Login, ResponseLogin } from '@auth/shared/models';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '@auth/services/loading.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginComponent {
   isShowPassword: boolean = false;
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
     private authServices: AuthService, 
     private router: Router, 
     private toastr: ToastrService,
@@ -45,7 +47,7 @@ export class LoginComponent {
       this.authServices.postLogin(loginData).subscribe(
         (response) => {
           console.warn('Login successful', response);
-          if(response.auth) {
+          if(response.auth && isPlatformBrowser(this.platformId)) {
             localStorage.setItem('token', response.token);
             this.router.navigate(['/dashboard']);
           } else {
