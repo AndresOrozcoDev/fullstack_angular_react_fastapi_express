@@ -50,6 +50,7 @@ export class LoginComponent {
           if(response.auth && isPlatformBrowser(this.platformId)) {
             localStorage.setItem('token', response.token);
             this.router.navigate(['/dashboard']);
+            this.loadingService.hide();
           } else {
             console.error('Login failed', response.auth)
           }
