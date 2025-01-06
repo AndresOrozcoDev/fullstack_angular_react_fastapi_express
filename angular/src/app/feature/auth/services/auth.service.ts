@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Login, ResponseLogin } from '@auth/shared/models';
-import { environment } from '../../../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { environment } from '../../../../environments/environment';
 
 export class AuthService {
 
-  urlApi = environment.EXPRESS_URL_API;
+  urlApi: string = environment.EXPRESS_URL_API || 'http://127.0.0.1:5000/api'
 
   constructor(private http: HttpClient) { }
 
