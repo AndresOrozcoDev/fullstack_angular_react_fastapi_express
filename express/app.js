@@ -21,7 +21,7 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 const corsOptions = {
   origin: [
     "http://localhost:4200",
-    "https://incomparable-gumdrop-472cf6.netlify.app/",
+    "https://incomparable-gumdrop-472cf6.netlify.app",
   ],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: ["Content-Type", "API_KEY"],
