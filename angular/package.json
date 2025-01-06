@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:portal": "node angular/portal/server/server.mjs"
+    "serve:ssr:portal": "node build/server/server.mjs"
   },
   "private": true,
   "dependencies": {
