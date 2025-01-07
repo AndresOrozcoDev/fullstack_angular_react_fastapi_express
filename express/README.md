@@ -46,13 +46,15 @@ Request Body:
         "username": "testuser",
         "password": "testpassword"
     }
-```
 
-```bash
 Response:
     {
-        "auth": true,
-        "token": "eyJhb........"
+        "status_code": 201,
+        "message": "Succesfull",
+        "data": [
+            "auth": true,
+            "token": "eyJhb........"
+        ]
     }
 ```
 
@@ -72,13 +74,15 @@ Request Body:
         "username": "testuser",
         "password": "testpassword"
     }
-```
 
-```bash
 Response:
     {
-        "id": 1,
-        "username": "testuser"
+        "status_code": 201,
+        "message": "Succesfull",
+        "data": [
+            "id": 1,
+            "username": "testuser"
+        ]
     }
 ```
 
@@ -96,9 +100,13 @@ Response:
 ```bash
 Response:
     {
-        "id": 1,
-        "username": "testuser",
-        "password": "$2a$08$fr90......"
+        "status_code": 201,
+        "message": "Succesfull",
+        "data": [
+            "id": 1,
+            "username": "testuser",
+            "password": "$2a$08$fr90......"
+        ]
     }
 ```
 
