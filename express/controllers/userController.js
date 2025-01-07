@@ -13,20 +13,69 @@ exports.register = (req, res) => {
     });
 };
 
+// Login controller
 exports.login = (req, res) => {
     const { username, password } = req.body;
 
-    db.get(`SELECT * FROM users WHERE username = ?`, [username], (err, user) => {
-        if (err || !user) return res.status(404).send("Usuario no encontrado.");
-        const passwordIsValid = bcrypt.compareSync(password, user.password);
-        if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
-        const token = jwt.sign({ 
-            id: user.id,
-            username: user.username,
-            role: user.role
-        }, process.env.API_KEY || 'dev', { expiresIn: 86400 });
+    // Validación de los parámetros necesarios
+    if (!username || !password) {
+        return res.status(400).json({
+            status_code: 400,
+            message: "Faltan parámetros. Por favor, asegúrese de incluir 'username' y 'password'."
+        });
+    }
 
-        res.status(200).send({ auth: true, token });
+    // Consulta a la base de datos para verificar el usuario
+    db.get(`SELECT * FROM users WHERE username = ?`, [username], (err, user) => {
+        if (err) {
+            // Error de conexión a la base de datos
+            console.error("Error de base de datos:", err);
+            return res.status(500).json({
+                status_code: 500,
+                message: "Error interno del servidor. No se pudo acceder a la base de datos."
+            });
+        }
+        if (!user) {
+            // Usuario no encontrado
+            return res.status(404).json({
+                status_code: 404,
+                message: "Usuario no encontrado."
+            });
+        }
+
+        // Verificación de la contraseña
+        const passwordIsValid = bcrypt.compareSync(password, user.password);
+        if (!passwordIsValid) {
+            // Contraseña inválida
+            return res.status(401).json({
+                status_code: 401,
+                message: "Contraseña incorrecta.",
+                data: { auth: false, token: null }
+            });
+        }
+
+        // Generación del token JWT
+        try {
+            const token = jwt.sign({
+                id: user.id,
+                username: user.username,
+                role: user.role
+            }, process.env.API_KEY || 'dev', { expiresIn: 86400 });
+
+            // Envío de respuesta con el token
+            return res.status(200).json({
+                status_code: 200,
+                message: "Inicio de sesión exitoso.",
+                data: { auth: true, token }
+            });
+        } catch (error) {
+            // Error al generar el token
+            console.error("Error al generar el token JWT:", error);
+            return res.status(500).json({
+                status_code: 500,
+                message: "Error al generar el token. Intente de nuevo más tarde."
+            });
+        }
     });
 };
 

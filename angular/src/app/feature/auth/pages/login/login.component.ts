@@ -1,10 +1,10 @@
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
-import { Login, ResponseLogin } from '@auth/shared/models';
+import { Login, Response, ResponseLogin } from '@auth/shared/models';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '@auth/services/loading.service';
@@ -19,7 +19,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class LoginComponent {
 
-  user$!: Observable<ResponseLogin>;
+  user$!: Observable<Response>;
   isError: boolean = false;
   isShowPassword: boolean = false;
 
@@ -36,37 +36,30 @@ export class LoginComponent {
     password: new FormControl('', Validators.required),
   });
 
-  onLogin() {
-    const loginData: Login = {
-      username: this.loginForm.value.username || '',
-      password: this.loginForm.value.password || ''
-    };
-    if (loginData.username && loginData.password) {
+  async onLogin() {
+    if (this.loginForm.valid) {
       this.isError = false;
       this.loadingService.show();
-      this.authServices.postLogin(loginData).subscribe(
-        (response) => {
-          console.warn('Login successful', response);
-          if(response.auth && isPlatformBrowser(this.platformId)) {
-            localStorage.setItem('token', response.token);
-            this.router.navigate(['/dashboard']);
-            this.loadingService.hide();
-          } else {
-            console.error('Login failed', response.auth)
-          }
-        },
-        (error) => {
-          this.loginForm.reset();
-          this.loadingService.hide();
-          console.error('Login failed', error);
-          this.toastr.error(error.message , 'Error');
+      try {
+        const loginData: Login = this.loginForm.value;
+        const response: Response = await lastValueFrom(this.authServices.postLogin(loginData));
+
+        if (response.data.auth) {
+          localStorage.setItem('token', response.data.token);
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.toastr.error(response.message);
         }
-      );
+        this.loadingService.hide();
+      } catch (error: any) {
+        this.toastr.error(error.error.message);
+        this.loadingService.hide();
+        this.loginForm.reset();
+      }
     } else {
-      this.loginForm.reset();
-      this.loadingService.hide();
       this.isError = true;
-      this.toastr.error('Los campos no pueden estar vacios.', 'Error');
+      this.toastr.error('Los campos no pueden estar vacíos.');
+      this.loadingService.hide();
     }
   }
 

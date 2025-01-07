@@ -24,10 +24,10 @@ export class ForgetPasswordComponent {
     const username = this.forgetForm.value.username || '';
     if (username) {
       this.router.navigate(['']);
-      this.toastr.success('Operación exitosa', 'Éxito');
+      this.toastr.success('Correo enviado.');
     } else {
       console.error('Form empty:', this.forgetForm.value);
-      this.toastr.error('Error', 'Error');
+      this.toastr.error('El campo no pueden estar vacíos.');
     }
   }
 

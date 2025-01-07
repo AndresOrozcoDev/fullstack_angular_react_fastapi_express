@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Login, ResponseLogin } from '@auth/shared/models';
+import { Login, Response, ResponseLogin } from '@auth/shared/models';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  postLogin(user: Login): Observable<ResponseLogin> {
-    return this.http.post<ResponseLogin>(`${this.urlApi}/users/login`, user);
+  postLogin(user: Login): Observable<Response> {
+    return this.http.post<Response>(`${this.urlApi}/users/login`, user);
   }
 }

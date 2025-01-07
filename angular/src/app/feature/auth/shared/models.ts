@@ -11,7 +11,7 @@ export interface ResponseLogin {
 export interface Response {
     status_code: number,
     message: string,
-    data: any
+    data: ResponseLogin
 }
 
 export interface User {
