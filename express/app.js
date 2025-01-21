@@ -7,7 +7,7 @@ require("dotenv").config();
 const swaggerDocs = require("./swagger");
 const usersRoutes = require("./routes/users");
 const errorHandler = require("./middleware/errorHandler");
-const db = require("./config/database");
+const db = require("./src/config/database");
 
 const app = express();
 const PORT = process.env.PORT_EXPRESS || 5000;
