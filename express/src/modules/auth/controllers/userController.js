@@ -1,6 +1,7 @@
-const db = require('../src/config/database');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+
+const db = require('../../../config/database');
 
 
 exports.register = (req, res) => {

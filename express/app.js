@@ -1,13 +1,14 @@
-const express = require("express");
 const cors = require("cors");
-const swaggerUi = require("swagger-ui-express");
+const express = require("express");
 const bodyParser = require("body-parser");
+const swaggerUi = require("swagger-ui-express");
 require("dotenv").config();
 
 const swaggerDocs = require("./swagger");
-const usersRoutes = require("./routes/users");
-const errorHandler = require("./middleware/errorHandler");
 const db = require("./src/config/database");
+const errorHandler = require("./src/middleware/errorHandler");
+const usersRoutes = require("./src/modules/auth/routes/users");
+
 
 const app = express();
 const PORT = process.env.PORT_EXPRESS || 5000;
@@ -46,7 +47,5 @@ app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Swagger docs available at http://localhost:${PORT}/docs`);
-  console.log(
-    `OpenAPI JSON available at http://localhost:${PORT}/openapi.json`
-  );
+  console.log(`OpenAPI JSON available at http://localhost:${PORT}/openapi.json`);
 });
