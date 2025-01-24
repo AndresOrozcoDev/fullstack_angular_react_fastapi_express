@@ -23,7 +23,7 @@ async def get_tasks(db: Session = Depends(get_db)):
         result = TaskServices(db).get_tasks()
         return Standard_response(
             status_code=status.HTTP_200_OK,
-            message="Task list",
+            message="Lista de tareas.",
             data=jsonable_encoder(result)
         )
     except Exception as e:
@@ -36,7 +36,7 @@ async def create_task(task: TaskInterface = Body(), db: Session = Depends(get_db
         created_task = TaskServices(db).create_task(task)
         return Standard_response(
             status_code=201,
-            message="Task created",
+            message="Tarea creada.",
             data=jsonable_encoder(created_task)
         )
     except Exception as e:
@@ -52,10 +52,10 @@ async def update_task(id: int = Path(), task: TaskInterface = Body(), db: Sessio
     try:
         updated_task = TaskServices(db).update_task(id, task)
         if not updated_task:
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Task not found')
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Tarea no encontrada')
         return Standard_response(
             status_code=status.HTTP_200_OK,
-            message="Task updated",
+            message="Tarea actualizada",
             data=jsonable_encoder(updated_task)
         )
     except HTTPException as e:
@@ -69,10 +69,10 @@ async def delete_task(id: int = Path(), db: Session = Depends(get_db)):
     try:
         isDeleted, task = TaskServices(db).delete_task(id)
         if not isDeleted or not task:
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Task not found')
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Tarea no encontrada')
         return Standard_response(
             status_code=status.HTTP_200_OK,
-            message="Task deleted",
+            message="Tarea eliminada",
             data=jsonable_encoder(task)
         )
     except HTTPException as e:
