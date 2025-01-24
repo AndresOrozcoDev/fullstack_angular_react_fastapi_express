@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 const authMiddleware = require('../../../middleware/auth');
-const userController = require('../controllers/userController');
+const authController = require('../controllers/authController');
 
 /**
  * @swagger
- * /api/users/register:
+ * /api/auth/register:
  *   post:
  *     summary: Registra un nuevo usuario
- *     tags: [Users]
+ *     tags: [Auth]
  *     requestBody:
  *       required: true
  *       content:
@@ -27,14 +27,14 @@ const userController = require('../controllers/userController');
  *       500:
  *         description: Error en el registro
  */
-router.post('/register', userController.register);
+router.post('/register', authController.register);
 
 /**
  * @swagger
- * /api/users/login:
+ * /api/auth/login:
  *   post:
  *     summary: Inicia sesión de un usuario
- *     tags: [Users]
+ *     tags: [Auth]
  *     requestBody:
  *       required: true
  *       content:
@@ -54,14 +54,14 @@ router.post('/register', userController.register);
  *       401:
  *         description: Credenciales inválidas
  */
-router.post('/login', userController.login);
+router.post('/login', authController.login);
 
 /**
  * @swagger
- * /api/users/me:
+ * /api/auth/me:
  *   get:
  *     summary: Obtiene el perfil del usuario autenticado
- *     tags: [Users]
+ *     tags: [Auth]
  *     security:
  *       - bearerAuth: []
  *     responses:
@@ -83,7 +83,7 @@ router.post('/login', userController.login);
  *       500:
  *         description: Error en la consulta
  */
-router.get('/me', authMiddleware.verifyToken, userController.getUserProfile);
+router.get('/me', authMiddleware.verifyToken, authController.getUserProfile);
 
 
 module.exports = router;

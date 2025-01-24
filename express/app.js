@@ -7,7 +7,7 @@ require("dotenv").config();
 const swaggerDocs = require("./swagger");
 const db = require("./src/config/database");
 const errorHandler = require("./src/middleware/errorHandler");
-const usersRoutes = require("./src/modules/auth/routes/users");
+const authRoutes = require("./src/modules/auth/routes/auth.routes");
 
 
 const app = express();
@@ -38,7 +38,7 @@ app.get("/openapi.json", (req, res) => {
 });
 
 // Rutas principales
-app.use("/api/users", usersRoutes);
+app.use("/api/auth", authRoutes);
 
 // Middleware de manejo de errores
 app.use(errorHandler);

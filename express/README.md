@@ -33,7 +33,7 @@ npm run dev
 #### Post login
 
 ```bash
-  POST /api/users/login
+  POST /api/auth/login
 ```
 
 | Parameter | Type     | Description                |
@@ -61,7 +61,7 @@ Response:
 #### Post register
 
 ```bash
-  POST /api/users/register
+  POST /api/auth/register
 ```
 
 | Parameter | Type     | Description                |
@@ -89,7 +89,7 @@ Response:
 #### Get me
 
 ```bash
-  POST /api/users/me
+  POST /api/auth/me
 ```
 
 | Parameter        | Type     | Description                |

@@ -25,8 +25,8 @@ const swaggerOptions = {
     ],
     tags: [
       {
-        name: 'Users',
-        description: 'Endpoints for managing users',
+        name: 'Auth',
+        description: 'Endpoints for managing authentication',
       }
     ],
     components: {
@@ -45,7 +45,7 @@ const swaggerOptions = {
       },
     },
   },
-  apis: ['./routes/*.js'],
+  apis: ['./**/routes/*.js'],
 };
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
