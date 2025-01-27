@@ -166,6 +166,12 @@ pytest
 ## Visualizador de la base de datos
 Puedes visualizar el archivo .sqlite con [SQLite Viewer](https://sqliteviewer.app/) subiendo el archivo.
 
+---
+
 ## Autor
 
-[@AndresOrozcoDev](https://github.com/AndresOrozcoDev)
+**Andrés Orozco**
+- [GitHub](https://github.com/AndresOrozcoDev)
+- [LinkedIn](https://www.linkedin.com/in/andresorozcodev/)
+
+---

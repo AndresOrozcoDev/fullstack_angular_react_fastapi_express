@@ -40,6 +40,12 @@ Pruebas unitarias
 ng test
 ```
 
+---
+
 ## Autor
 
-[@AndresOrozcoDev](https://github.com/AndresOrozcoDev)
+**Andrés Orozco**
+- [GitHub](https://github.com/AndresOrozcoDev)
+- [LinkedIn](https://www.linkedin.com/in/andresorozcodev/)
+
+---
